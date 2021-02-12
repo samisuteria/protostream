@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service Demo {
+  rpc Connect(Connection) returns (stream Message);
+  rpc Update(Message) returns (Empty);
+  rpc Disconnect(Connection) returns (Empty);
+}
+
+message Connection { string clientID = 1; }
+
+message Message {
+  string clientID = 1;
+  string message = 2;
+}
+
+message Empty {}

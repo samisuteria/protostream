@@ -1,0 +1,16 @@
+version: "3"
+services:
+  server: 
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    ports: 
+      - "3000:3000"
+  envoy:
+    build:
+      context: ./envoy
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on: 
+      - server
